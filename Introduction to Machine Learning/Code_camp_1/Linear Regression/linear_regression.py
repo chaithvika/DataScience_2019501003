@@ -14,7 +14,7 @@ from sklearn.decomposition import PCA
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.kernel_ridge import KernelRidge
 
-path = """C:/Users/kittu/Documents/DS_Specialization/DataScience_2019501003/Introduction to Machine Learning/Code_camp_1/Linear Regression/"""
+path = """C:/Users/kittu/Documents/Hands-on assignments/Linear Regression/"""
 
 
 train = path + "train.csv"
@@ -23,8 +23,8 @@ test = path + "test.csv"
 trainx_df = pd.read_csv(train, index_col = 'Id')
 test_df = pd.read_csv(test, index_col = 'Id')
 
-trainy_df = trainx_df['SalePrice']
-trainx_df.drop('SalePrice', axis=1, inplace=True)
+trainy_df = trainx_df['revenue']
+trainx_df.drop('revenue', axis=1, inplace=True)
 
 sample_size = len(trainx_df)
 columns_with_null_values = []
@@ -110,7 +110,7 @@ print(alpha,'\n', score_train, '\n', score_test,'\n', mse_train, '\n', mse_test)
 
 Ridge_model = Ridge(alpha = 146,tol = 0.01).fit(X_train, y_train)
 testpred = pd.DataFrame(Ridge_model.predict(test_df))
-testpred.to_csv("test_pred.csv")
+testpred.to_csv("pred.csv")
 
 plt.figure(1)
 plt.plot(alpha, score_train, 'g--', label="train_score")
